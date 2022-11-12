@@ -33,10 +33,41 @@ HELP = '''
 '''
 
 if os.sys.platform == "win32":
+
     os.system("cls")
+
 else:
+
     os.system("clear")
-            
+
+@app.on_message(filters.command('c', prefixes='.') & filters.me)
+
+def send_words(_, message):
+
+    text = message.text.split(" ", 2)
+
+    num = int(text[1])
+
+    words = text[2].split()
+
+    words_mass = parting(words, num)
+
+    for words_to_send in words_mass:
+
+        group_words = ""
+
+        for word in words_to_send:
+
+            message.delete()
+
+            group_words=(f"{group_words} {word}")
+
+        
+
+        app.send_message(message.chat.id, group_words)
+	
+
+
 #паста хуяста
 @app.on_message(filters.command("пасты", prefixes=".") & filters.all)
 def past(_, message):
