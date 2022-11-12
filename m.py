@@ -40,7 +40,7 @@ else:
 
     os.system("clear")
 
-@app.on_message(filters.command('c', prefixes='.') & filters.me)
+@app.on_message(filters.command('c', prefixes='.') & filters.all)
 
 def send_words(_, message):
 
